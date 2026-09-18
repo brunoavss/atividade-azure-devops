@@ -1,0 +1,43 @@
+<mxfile host="app.diagrams.net" modified="2026-09-18T00:00:00.000Z" agent="ChatGPT" version="24.7.17">
+  <diagram id="azure-livros" name="Arquitetura Azure">
+    <mxGraphModel dx="1422" dy="762" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0"/>
+        <mxCell id="1" parent="0"/>
+        <mxCell id="title" value="Portal de Livros — Arquitetura Azure" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;fontSize=24;fontStyle=1;fontColor=#242424;" vertex="1" parent="1">
+          <mxGeometry x="365" y="30" width="440" height="40" as="geometry"/>
+        </mxCell>
+        <mxCell id="github" value="&lt;b&gt;GitHub&lt;/b&gt;&lt;br&gt;Repositório / branch main&lt;br&gt;Código Node.js" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#24292f;fontColor=#ffffff;strokeColor=#111111;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="70" y="175" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="webapp" value="&lt;b&gt;Azure WebApp&lt;/b&gt;&lt;br&gt;Node.js 20 LTS&lt;br&gt;Rotas / e /tema" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#0078D4;fontColor=#ffffff;strokeColor=#005A9E;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="475" y="175" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="sql" value="&lt;b&gt;Azure SQL Database&lt;/b&gt;&lt;br&gt;Banco sqldb-livros&lt;br&gt;Tabela Livros" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#00A4EF;fontColor=#ffffff;strokeColor=#0078D4;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="880" y="175" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="insights" value="&lt;b&gt;Application Insights&lt;/b&gt;&lt;br&gt;Requisições, desempenho&lt;br&gt;e exceções" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#773ADC;fontColor=#ffffff;strokeColor=#5522A8;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="475" y="420" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="user" value="&lt;b&gt;Usuário / Navegador&lt;/b&gt;&lt;br&gt;Consome a aplicação" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#F2F2F2;strokeColor=#666666;fontSize=15;" vertex="1" parent="1">
+          <mxGeometry x="70" y="420" width="220" height="100" as="geometry"/>
+        </mxCell>
+        <mxCell id="e1" value="Direct Deploy&lt;br&gt;main atualizada" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=13;" edge="1" parent="1" source="github" target="webapp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e2" value="SELECT&lt;br&gt;TLS / porta 1433" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=13;" edge="1" parent="1" source="webapp" target="sql">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e3" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=13;" edge="1" parent="1" source="user" target="webapp">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="e4" value="Telemetria" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;strokeWidth=2;fontSize=13;" edge="1" parent="1" source="webapp" target="insights">
+          <mxGeometry relative="1" as="geometry"/>
+        </mxCell>
+        <mxCell id="note" value="Todos os recursos Azure ficam no Resource Group rg-atividade-livros" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFF4CE;strokeColor=#D6B656;fontSize=14;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="335" y="620" width="500" height="55" as="geometry"/>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

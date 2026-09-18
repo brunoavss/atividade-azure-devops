@@ -110,15 +110,23 @@ app.get('/', (req, res) => {
 });
 
 app.get('/tema', async (req, res) => {
+    let pool;
     try {
-        // ALUNOS: Usem a configuração dbConfig para conectar no banco e fazer o SELECT na tabela do tema escolhido!
-        await sql.connect(dbConfig);
-        const result = await sql.query`SELECT * FROM NomeDaSuaTabela`; // ALTERAR AQUI!
+        pool = await sql.connect(dbConfig);
+        const result = await pool.request().query(`
+            SELECT id, titulo, autor, ano_publicacao, genero
+            FROM Livros
+            ORDER BY id
+        `);
         
         res.json(result.recordset);
     } catch (err) {
         console.error("Erro ao conectar no banco:", err);
         res.status(500).send("Erro ao buscar os dados: " + err.message);
+    } finally {
+        if (pool) {
+            await pool.close();
+        }
     }
 });
 
